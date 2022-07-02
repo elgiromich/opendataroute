@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<head>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.6.0/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/python-visualization/folium/master/folium/templates/leaflet.awesome.rotate.css"/>
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_625c1602015744b1bec62ec502be9847 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+            </style>
+        
+    
+                    <style>
+                        .foliumtooltip {
+                            background-color: white; color: #333333; font-family: arial; font-size: 12px; padding: 10px; border-collapse: collapse; border: 10px solid white;
+                        }
+                       .foliumtooltip table{
+                            margin: auto;
+                        }
+                        .foliumtooltip tr{
+                            text-align: left;
+                        }
+                        .foliumtooltip th{
+                            padding: 2px; padding-right: 8px;
+                        }
+                    </style>
+            
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-search@2.9.7/dist/leaflet-search.min.css"/>
+</head>
+<body>    
+    
+<style>
+#datos {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 150px;
+  font-size: 14px;
+  text-align: center;
+  background-color:#1c355e;
+}
+.leaflet-tooltip {
+                    padding: 0px;
+                 }
+
+</style>
+    
+            <div class="folium-map" id="map_625c1602015744b1bec62ec502be9847" ></div>
+        
+    
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alcaldía Auxiliar Monte María</title>
+  <link rel="shortcut icon" href="https://www.villanueva.gob.gt/sites/default/files/logo.png" type="image/png" />
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <script>
+  $( function() {
+    $( "#maplegend" ).draggable({
+                    start: function (event, ui) {
+                        $(this).css({
+                            right: "auto",
+                            top: "auto",
+                            bottom: "auto"
+                        });
+                    }
+                });
+});
+
+  </script>
+</head>
+<body>
+
+
+<div id='maplegend' class='maplegend'
+    style='position: absolute; z-index:9999; border:2px solid grey; background-color:#1c355e;
+     border-radius:6px; padding: 10px; font-size:14px; right: 10px; bottom: 10px;'>
+
+<table style='border-collapse: collapse; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; font-size:14px; width:100%;'>
+    <tr>
+        <td valign='middle' style='color:#feda5f; font-weight: bold;'>Resumen</td>
+        <td align ='right'><img src='https://www.4shared.com/img/Lma4THUaea/s25/1740e71f740/muni_ico' border=0 height=28px width=28px></td>
+    </tr>
+</table>
+
+<hr style='width: 50%; margin-top:-1em; border: 0px;'/>
+<div class='legend-scale'>
+
+  <table style='border-collapse: collapse; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; font-size:12px'>
+      <tr style='border-bottom: 5px solid #1c355e;'>
+            <td><span style='border: 1px solid #999; padding-right: 30px; background:#F2360C; margin-right: 5px;'></span></td>
+            <td valign='middle' style='color:white;'><strong>Urgente:</strong></td>
+            <td align ='right' valign='middle' style='border-left:10px solid #1c355e; color:white;' id='td_urgente'>6</td>
+      </tr>
+      <tr style='border-bottom: 5px solid #1c355e;'>
+            <td><span style='border: 1px solid #999; padding-right: 30px; background:#F2A20C; margin-right: 5px;'></span></td>
+            <td valign='middle' style='color:white;'><strong>Moderado:</strong></td>
+            <td align ='right' valign='middle' style='border-left:10px solid #1c355e; color:white;' id='td_moderado'>12</td>
+      </tr>
+      <tr style='border-bottom: 5px solid #1c355e;'>
+            <td><span style='border: 1px solid #999; padding-right: 30px; background:#167362; margin-right: 5px;'></span></td>
+            <td valign='middle' style='color:white;'><strong>Labor Mpal.:</strong></td>
+            <td align ='right' valign='middle' style='border-left:10px solid #1c355e; color:white;' id='td_mpal'>20</td>
+      </tr>
+  </table>
+
+</div>
+</div>
+</body>
+</html>
+
+<style type='text/css'>
+  .maplegend .legend-title {
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 90%;
+    }
+  .maplegend .legend-scale ul {
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 0;
+    float: left;
+    list-style: none;
+    }
+  .maplegend .legend-scale ul li {
+    font-size: 80%;
+    list-style: none;
+    margin-left: 0;
+    line-height: 18px;
+    margin-bottom: 2px;
+    }
+  .maplegend ul.legend-labels li span {
+    display: block;
+    float: left;
+    height: 16px;
+    width: 30px;
+    margin-right: 5px;
+    margin-left: 0;
+    border: 1px solid #999;
+    }
+  .maplegend .legend-source {
+    font-size: 80%;
+    color: #777;
+    clear: both;
+    }
+  .maplegend a {
+    color: #777;
+    }
+</style>
+</body>
+<script>    
+
+    var map_625c1602015744b1bec62ec502be9847 = L.map(
+                "map_625c1602015744b1bec62ec502be9847",
+                {
+                    center: [14.5672574, -90.5659092],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 14.1,
+                    zoomControl: false,
+                    preferCanvas: false,
+                }
+            );
+
+
+
+    var dict = {'Gestión Urb.': {'Alta': 1, 'Media': 0, 'Baja': 0}, 'Infra.': {'Alta': 1, 'Media': 6, 'Baja': 0}, 'Juzg. Mpal.': {'Alta': 0, 'Media': 1, 'Baja': 0}, 'Org. Com.': {'Alta': 1, 'Media': 2, 'Baja': 13}, 'Seg. Integral': {'Alta': 0, 'Media': 1, 'Baja': 1}, 'Serv. Publ.': {'Alta': 3, 'Media': 2, 'Baja': 6}}
+
+       map_625c1602015744b1bec62ec502be9847.on({
+                    overlayadd: function(e) {
+                             if(e.name == 'Gestión Urb.'){
+                                $('#td_urgente').html( parseInt($('#td_urgente').text()) + dict['Gestión Urb.']['Alta'] );
+                                $('#td_moderado').html( parseInt($('#td_moderado').text()) + dict['Gestión Urb.']['Media'] );
+                                $('#td_mpal').html( parseInt($('#td_mpal').text()) + dict['Gestión Urb.']['Baja'] );
+                            }
+                             else if(e.name == 'Infra.'){
+                                $('#td_urgente').html( parseInt($('#td_urgente').text()) + dict['Infra.']['Alta'] );
+                                $('#td_moderado').html( parseInt($('#td_moderado').text()) + dict['Infra.']['Media'] );
+                                $('#td_mpal').html( parseInt($('#td_mpal').text()) + dict['Infra.']['Baja'] );
+                            }
+                             else if(e.name == 'Juzg. Mpal.'){
+                                $('#td_urgente').html( parseInt($('#td_urgente').text()) + dict['Juzg. Mpal.']['Alta'] );
+                                $('#td_moderado').html( parseInt($('#td_moderado').text()) + dict['Juzg. Mpal.']['Media'] );
+                                $('#td_mpal').html( parseInt($('#td_mpal').text()) + dict['Juzg. Mpal.']['Baja'] );
+                            }
+                             else if(e.name == 'Org. Com.'){
+                                $('#td_urgente').html( parseInt($('#td_urgente').text()) + dict['Org. Com.']['Alta'] );
+                                $('#td_moderado').html( parseInt($('#td_moderado').text()) + dict['Org. Com.']['Media'] );
+                                $('#td_mpal').html( parseInt($('#td_mpal').text()) + dict['Org. Com.']['Baja'] );
+                            }
+                             else if(e.name == 'Seg. Integral'){
+                                $('#td_urgente').html( parseInt($('#td_urgente').text()) + dict['Seg. Integral']['Alta'] );
+                                $('#td_moderado').html( parseInt($('#td_moderado').text()) + dict['Seg. Integral']['Media'] );
+                                $('#td_mpal').html( parseInt($('#td_mpal').text()) + dict['Seg. Integral']['Baja'] );
+                            }
+                             else if(e.name == 'Serv. Publ.'){
+                                $('#td_urgente').html( parseInt($('#td_urgente').text()) + dict['Serv. Publ.']['Alta'] );
+                                $('#td_moderado').html( parseInt($('#td_moderado').text()) + dict['Serv. Publ.']['Media'] );
+                                $('#td_mpal').html( parseInt($('#td_mpal').text()) + dict['Serv. Publ.']['Baja'] );
+                            }
+                            },
+                    overlayremove: function(e) {
+                            if(e.name == 'Gestión Urb.'){
+                                $('#td_urgente').html( parseInt($('#td_urgente').text()) - dict['Gestión Urb.']['Alta'] );
+                                $('#td_moderado').html( parseInt($('#td_moderado').text()) - dict['Gestión Urb.']['Media'] );
+                                $('#td_mpal').html( parseInt($('#td_mpal').text()) - dict['Gestión Urb.']['Baja'] );
+                            }
+                            else if(e.name == 'Infra.'){
+                                $('#td_urgente').html( parseInt($('#td_urgente').text()) - dict['Infra.']['Alta'] );
+                                $('#td_moderado').html( parseInt($('#td_moderado').text()) - dict['Infra.']['Media'] );
+                                $('#td_mpal').html( parseInt($('#td_mpal').text()) - dict['Infra.']['Baja'] );
+                            }
+                            else if(e.name == 'Juzg. Mpal.'){
+                                $('#td_urgente').html( parseInt($('#td_urgente').text()) - dict['Juzg. Mpal.']['Alta'] );
+                                $('#td_moderado').html( parseInt($('#td_moderado').text()) - dict['Juzg. Mpal.']['Media'] );
+                                $('#td_mpal').html( parseInt($('#td_mpal').text()) - dict['Juzg. Mpal.']['Baja'] );
+                            }
+                            else if(e.name == 'Org. Com.'){
+                                $('#td_urgente').html( parseInt($('#td_urgente').text()) - dict['Org. Com.']['Alta'] );
+                                $('#td_moderado').html( parseInt($('#td_moderado').text()) - dict['Org. Com.']['Media'] );
+                                $('#td_mpal').html( parseInt($('#td_mpal').text()) - dict['Org. Com.']['Baja'] );
+                            }
+                            else if(e.name == 'Seg. Integral'){
+                                $('#td_urgente').html( parseInt($('#td_urgente').text()) - dict['Seg. Integral']['Alta'] );
+                                $('#td_moderado').html( parseInt($('#td_moderado').text()) - dict['Seg. Integral']['Media'] );
+                                $('#td_mpal').html( parseInt($('#td_mpal').text()) - dict['Seg. Integral']['Baja'] );
+                            }
+                            else if(e.name == 'Serv. Publ.'){
+                                $('#td_urgente').html( parseInt($('#td_urgente').text()) - dict['Serv. Publ.']['Alta'] );
+                                $('#td_moderado').html( parseInt($('#td_moderado').text()) - dict['Serv. Publ.']['Media'] );
+                                $('#td_mpal').html( parseInt($('#td_mpal').text()) - dict['Serv. Publ.']['Baja'] );
+                            }
+                            }
+                        });
+
+        
+    
+            var tile_layer_46d79037557844de9a1131f2b45efa73 = L.tileLayer(
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"http://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"http://cartodb.com/attributions\"\u003eCartoDB\u003c/a\u003e, CartoDB \u003ca href =\"http://cartodb.com/attributions\"\u003eattributions\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 18, "maxZoom": 18, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            ).addTo(map_625c1602015744b1bec62ec502be9847);
+        
+    
+            var feature_group_5825ca76e70b47e4bc755f3aceea46a9 = L.featureGroup(
+                {}
+            ).addTo(map_625c1602015744b1bec62ec502be9847);
+        
+    
+        function geo_json_98b1a6e7a4e8408dbcd8d02a5ce73467_styler(feature) {
+            switch(feature.id) {
+                case "0c54dc0aeba098c3d66df033a848419a": 
+                    return {"color": "black", "dashArray": "1, 1", "fillColor": "#5D94F5", "fillOpacity": 0.3, "weight": 1};
+                case "13b9925f594d65515b2980c1038c603e": 
+                    return {"color": "black", "dashArray": "1, 1", "fillColor": "#A4C5BA", "fillOpacity": 0.3, "weight": 1};
+                case "1afec76881a0d7bfae337b36e6820628": 
+                    return {"color": "black", "dashArray": "1, 1", "fillColor": "#B0BF3B", "fillOpacity": 0.3, "weight": 1};
+                case "2dbb1a4cd1bdde3b36cc08e1461cae88": 
+                    return {"color": "black", "dashArray": "1, 1", "fillColor": "#024959", "fillOpacity": 0.3, "weight": 1};
+                case "38b71627f3a4a87daf04d08d83e5add4": case "f72f6604e946d78a7695a7b904f38f3e": 
+                    return {"color": "black", "dashArray": "1, 1", "fillColor": "#03A6A6", "fillOpacity": 0.3, "weight": 1};
+                case "3e0784fdc5e6ee09b6a8f570e7eeccfd": 
+                    return {"color": "black", "dashArray": "1, 1", "fillColor": "#037F8C", "fillOpacity": 0.3, "weight": 1};
+                case "45d4d3a33673dcf4bec808f156c5fae6": 
+                    return {"color": "black", "dashArray": "1, 1", "fillColor": "#E0A500", "fillOpacity": 0.3, "weight": 1};
+                case "654bb339873617724fd11e83adb91975": 
+                    return {"color": "black", "dashArray": "1, 1", "fillColor": "#C2BE66", "fillOpacity": 0.3, "weight": 1};
+                case "65728b807648845a3c6c9ff5ed88a927": 
+                    return {"color": "black", "dashArray": "1, 1", "fillColor": "#A66874", "fillOpacity": 0.3, "weight": 1};
+                case "8856f54783837e89f7b393a9881cd1f0": 
+                    return {"color": "black", "dashArray": "1, 1", "fillColor": "#5A8E85", "fillOpacity": 0.3, "weight": 1};
+                case "8a4f4fb46ad6b19fae4e07cfc0d2c73c": case "aaa59afe04f8c1376999210817e4109b": 
+                    return {"color": "black", "dashArray": "1, 1", "fillColor": "#244C4C", "fillOpacity": 0.3, "weight": 1};
+                case "8ca23cb31926b0bb1b7e5a2041a19288": 
+                    return {"color": "black", "dashArray": "1, 1", "fillColor": "#BFAEA4", "fillOpacity": 0.3, "weight": 1};
+                case "e5e31b0d0eff9aec272ce5d2a62cf090": 
+                    return {"color": "black", "dashArray": "1, 1", "fillColor": "#D1D99A", "fillOpacity": 0.3, "weight": 1};
+                case "efd2c9bfb69ba481a39b8ab4d0625c66": 
+                    return {"color": "black", "dashArray": "1, 1", "fillColor": "#A83927", "fillOpacity": 0.3, "weight": 1};
+                case "fe3f88a9712a0ba1cbec896ae74f29c2": 
+                    return {"color": "black", "dashArray": "1, 1", "fillColor": "#F5482C", "fillOpacity": 0.3, "weight": 1};
+                default:
+                    return {"color": "black", "dashArray": "1, 1", "fillColor": "#FFB657", "fillOpacity": 0.3, "weight": 1};
+            }
+        }
+        function geo_json_98b1a6e7a4e8408dbcd8d02a5ce73467_highlighter(feature) {
+            switch(feature.id) {
+                default:
+                    return {"color": "#000000", "fillColor": "#000000", "fillOpacity": 0.5, "weight": 0.1};
+            }
+        }
+        function geo_json_98b1a6e7a4e8408dbcd8d02a5ce73467_onEachFeature(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    geo_json_98b1a6e7a4e8408dbcd8d02a5ce73467.resetStyle(e.target);
+                },
+                mouseover: function(e) {
+                    e.target.setStyle(geo_json_98b1a6e7a4e8408dbcd8d02a5ce73467_highlighter(e.target.feature));
+                },
+                click: function(e) {
+                    map_625c1602015744b1bec62ec502be9847.fitBounds(e.target.getBounds());
+                }
+            });
+        };
+        var geo_json_98b1a6e7a4e8408dbcd8d02a5ce73467 = L.geoJson(null, {
+                onEachFeature: geo_json_98b1a6e7a4e8408dbcd8d02a5ce73467_onEachFeature,
+            
+                style: geo_json_98b1a6e7a4e8408dbcd8d02a5ce73467_styler,
+        }).addTo(feature_group_5825ca76e70b47e4bc755f3aceea46a9);
+
+        function geo_json_98b1a6e7a4e8408dbcd8d02a5ce73467_add (data) {
+            geo_json_98b1a6e7a4e8408dbcd8d02a5ce73467.addData(data);
+        }
+            geo_json_98b1a6e7a4e8408dbcd8d02a5ce73467_add({"features": [{"geometry": {"coordinates": [[[-90.563197, 14.574676], [-90.565107, 14.572533], [-90.562409, 14.57123], [-90.561076, 14.568571], [-90.559612, 14.565612], [-90.559153, 14.565798], [-90.559308, 14.566152], [-90.558446, 14.566056], [-90.558601, 14.56647], [-90.559699, 14.56659], [-90.559965, 14.567125], [-90.559631, 14.567341], [-90.559699, 14.567593], [-90.559029, 14.567845], [-90.559396, 14.568812], [-90.559147, 14.569017], [-90.560162, 14.570967], [-90.559794, 14.571185], [-90.560543, 14.572648], [-90.560414, 14.573529], [-90.559852, 14.573523], [-90.559723, 14.574642], [-90.559904, 14.575085], [-90.560291, 14.575517], [-90.560453, 14.575642], [-90.560859, 14.575823], [-90.563197, 14.574676]]], "type": "Polygon"}, "id": "008bae335d5fb3b63c2a61ef5940d615", "properties": {"Colonia": "Prados de Monte Mar\u00eda", "Contacto": "Heidy De Leon", "Organizaci\u00f3n": "REPRAMM"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-90.565917, 14.581799], [-90.56575, 14.581653], [-90.564969, 14.582713], [-90.565174, 14.582909], [-90.565942, 14.581823], [-90.565917, 14.581799]]], "type": "Polygon"}, "id": "0c54dc0aeba098c3d66df033a848419a", "properties": {"Colonia": "Monte Mar\u00eda II", "Contacto": "Alberto Barrios Marroqu\u00edn", "Organizaci\u00f3n": "COCODE de la 1ra. Av. 42 Calle"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-90.566195, 14.575487], [-90.566167, 14.575552], [-90.56598, 14.575432], [-90.563762, 14.574734], [-90.564325, 14.574129], [-90.56454, 14.573869], [-90.564714, 14.573661], [-90.564832, 14.573522], [-90.56487, 14.57352], [-90.564924, 14.57353], [-90.565015, 14.573563], [-90.565602, 14.573758], [-90.565768, 14.573813], [-90.565687, 14.574086], [-90.565574, 14.574526], [-90.565587, 14.574783], [-90.565672, 14.575018], [-90.565827, 14.575219], [-90.566195, 14.575487]]], "type": "Polygon"}, "id": "13b9925f594d65515b2980c1038c603e", "properties": {"Colonia": "Monte Mar\u00eda I", "Contacto": "Armando Chavarr\u00eda Samayoa", "Organizaci\u00f3n": "COCODE 9na. Avenida, 47 Calle, 47 Calle \"A\" y 48 Calle"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-90.567316, 14.577407], [-90.567238, 14.577552], [-90.567226, 14.577585], [-90.56719, 14.577692], [-90.567148, 14.577813], [-90.567684, 14.578125], [-90.567739, 14.578201], [-90.567339, 14.579167], [-90.566998, 14.579844], [-90.566704, 14.580218], [-90.566975, 14.580499], [-90.567395, 14.579952], [-90.567447, 14.579867], [-90.567806, 14.579099], [-90.568133, 14.578279], [-90.568162, 14.578191], [-90.568166, 14.578118], [-90.568133, 14.578022], [-90.568026, 14.577882], [-90.567848, 14.577742], [-90.567316, 14.577407]]], "type": "Polygon"}, "id": "1afec76881a0d7bfae337b36e6820628", "properties": {"Colonia": "Monte Mar\u00eda I", "Contacto": "Mario Alfonso Morales Paiz", "Organizaci\u00f3n": "COCODE 1ra. Av.   44 Calle a la 45 Calle \"A\" "}, "type": "Feature"}, {"geometry": {"coordinates": [[[-90.563876, 14.580125], [-90.563677, 14.580388], [-90.562244, 14.580031], [-90.561472, 14.580336], [-90.56139, 14.580298], [-90.561254, 14.580209], [-90.560934, 14.579265], [-90.561269, 14.579128], [-90.561317, 14.57911], [-90.561584, 14.579857], [-90.562162, 14.579603], [-90.563259, 14.57988], [-90.563876, 14.580125]]], "type": "Polygon"}, "id": "2dbb1a4cd1bdde3b36cc08e1461cae88", "properties": {"Colonia": "Monte Mar\u00eda III", "Contacto": "Oscar Adan Pinot", "Organizaci\u00f3n": "COCODE de la 9na. Av. 43 Calle"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-90.569207, 14.575824], [-90.569156, 14.575933], [-90.568872, 14.575778], [-90.56884, 14.575741], [-90.56883, 14.575675], [-90.568885, 14.575441], [-90.569009, 14.574985], [-90.569116, 14.57502], [-90.569009, 14.575417], [-90.568943, 14.575683], [-90.568968, 14.57571], [-90.569122, 14.575778], [-90.569207, 14.575824]]], "type": "Polygon"}, "id": "38b71627f3a4a87daf04d08d83e5add4", "properties": {"Colonia": "Monte Mar\u00eda I", "Contacto": "Catalina Paez Hanser", "Organizaci\u00f3n": "COCODE de la 1ra. Av. \"A\" 48 Calle"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-90.566674, 14.579227], [-90.566509, 14.579076], [-90.566106, 14.579726], [-90.566284, 14.579865], [-90.566696, 14.579257], [-90.566674, 14.579227]]], "type": "Polygon"}, "id": "3e0784fdc5e6ee09b6a8f570e7eeccfd", "properties": {"Colonia": "Monte Mar\u00eda I", "Contacto": "Rodolfo Ferrer Aguirre", "Organizaci\u00f3n": "COCODE de la 2da. Av. entre 44 Calle y 45 Calle"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-90.570235, 14.575375], [-90.570092, 14.575327], [-90.569978, 14.575597], [-90.56993, 14.575809], [-90.569904, 14.575882], [-90.569796, 14.576055], [-90.569593, 14.576305], [-90.569301, 14.576531], [-90.56916, 14.576572], [-90.569023, 14.576549], [-90.568647, 14.576317], [-90.567837, 14.5758], [-90.567534, 14.576644], [-90.567625, 14.576673], [-90.568529, 14.577249], [-90.568588, 14.577284], [-90.568638, 14.577283], [-90.5687, 14.577264], [-90.569406, 14.576607], [-90.569723, 14.576338], [-90.569926, 14.576071], [-90.570005, 14.575978], [-90.570093, 14.575766], [-90.570109, 14.575599], [-90.570235, 14.575375]]], "type": "Polygon"}, "id": "45d4d3a33673dcf4bec808f156c5fae6", "properties": {"Colonia": "Monte Mar\u00eda I", "Contacto": "Jos\u00e9 Luis Rivera Muracao", "Organizaci\u00f3n": "COCODE de la 1ra. Av. 47 Calle, 2da. Av. 46 Calle y 48 Calle"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-90.568593, 14.577296], [-90.567619, 14.576675], [-90.567478, 14.57663], [-90.56589, 14.576145], [-90.56479, 14.575781], [-90.563968, 14.57553], [-90.563646, 14.575353], [-90.563493, 14.575231], [-90.563433, 14.575112], [-90.563247, 14.575198], [-90.563665, 14.575509], [-90.563963, 14.575675], [-90.564873, 14.575971], [-90.565863, 14.576294], [-90.567106, 14.576677], [-90.567566, 14.576849], [-90.568307, 14.577314], [-90.568742, 14.577603], [-90.568843, 14.577868], [-90.56881, 14.578121], [-90.56887, 14.578156], [-90.569018, 14.577842], [-90.569014, 14.577789], [-90.568951, 14.577638], [-90.568857, 14.577505], [-90.568593, 14.577296]]], "type": "Polygon"}, "id": "654bb339873617724fd11e83adb91975", "properties": {"Colonia": "Monte Mar\u00eda I, Monte Mar\u00eda III", "Contacto": "Francisco Alem\u00e1n Mairen", "Organizaci\u00f3n": "COCODE 46 Calle Aguilar Batres hasta la 9na. Avenida"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-90.563132, 14.576051], [-90.56319, 14.576088], [-90.562353, 14.576571], [-90.561894, 14.578189], [-90.561752, 14.578139], [-90.561672, 14.578043], [-90.561655, 14.578018], [-90.561807, 14.577395], [-90.562006, 14.576698], [-90.562115, 14.576315], [-90.562756, 14.575982], [-90.562955, 14.575913], [-90.563132, 14.576051]]], "type": "Polygon"}, "id": "65728b807648845a3c6c9ff5ed88a927", "properties": {"Colonia": "Monte Mar\u00eda III", "Contacto": "Manuel \u00c1vila Melgar", "Organizaci\u00f3n": "COCODE de la 8va. Av. y 43 Calle \"A\""}, "type": "Feature"}, {"geometry": {"coordinates": [[[-90.566971, 14.5805], [-90.566692, 14.580203], [-90.566285, 14.579874], [-90.566004, 14.57965], [-90.564763, 14.578631], [-90.56466, 14.578772], [-90.565872, 14.579729], [-90.566891, 14.580599], [-90.566971, 14.5805]]], "type": "Polygon"}, "id": "7b130a2ef34611e1b48de1945ed595ca", "properties": {"Colonia": "Monte Mar\u00eda I", "Contacto": "Lourdes Dur\u00e1n de Sult\u00e1n", "Organizaci\u00f3n": "COCODE de la 4ta. Av. y 44 Calle"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-90.563283, 14.580773], [-90.563027, 14.581132], [-90.56218, 14.580697], [-90.562433, 14.580334], [-90.563283, 14.580773]]], "type": "Polygon"}, "id": "8856f54783837e89f7b393a9881cd1f0", "properties": {"Colonia": "Monte Mar\u00eda III", "Contacto": "Paola Perez Mazariegos", "Organizaci\u00f3n": "COCODE Condominio Puerta Grande"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-90.566873, 14.577323], [-90.566171, 14.578926], [-90.566151, 14.578957], [-90.565508, 14.578381], [-90.565511, 14.578337], [-90.565501, 14.5783], [-90.565498, 14.578269], [-90.565501, 14.578209], [-90.565964, 14.577029], [-90.566003, 14.576998], [-90.566048, 14.576985], [-90.566106, 14.576982], [-90.566187, 14.576982], [-90.566653, 14.577101], [-90.566928, 14.577207], [-90.566873, 14.577323]]], "type": "Polygon"}, "id": "8a4f4fb46ad6b19fae4e07cfc0d2c73c", "properties": {"Colonia": "Monte Mar\u00eda I", "Contacto": "Carolina Rodriguez de Bor", "Organizaci\u00f3n": "COCODE de 3ra. Av. y 2da. Av. \"A\", 45 Calle y 45 Calle \"A\""}, "type": "Feature"}, {"geometry": {"coordinates": [[[-90.566676, 14.582125], [-90.566542, 14.582309], [-90.565152, 14.581147], [-90.563745, 14.579974], [-90.563906, 14.579731], [-90.564884, 14.580552], [-90.566083, 14.581543], [-90.56669, 14.582107], [-90.566676, 14.582125]]], "type": "Polygon"}, "id": "8ca23cb31926b0bb1b7e5a2041a19288", "properties": {"Colonia": "Monte Mar\u00eda I", "Contacto": "Julio Toledo Herrera", "Organizaci\u00f3n": "COCODE 42 Calle"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-90.575288, 14.552483], [-90.575301, 14.552355], [-90.575243, 14.552222], [-90.575113, 14.552179], [-90.57459, 14.552119], [-90.574371, 14.5514], [-90.575203, 14.551119], [-90.575038, 14.550559], [-90.574126, 14.550867], [-90.57434, 14.550241], [-90.574331, 14.550048], [-90.57429, 14.549956], [-90.574062, 14.549874], [-90.57392, 14.549913], [-90.57357, 14.550179], [-90.573409, 14.55043], [-90.573267, 14.550283], [-90.573285, 14.549959], [-90.573756, 14.549565], [-90.573892, 14.549599], [-90.574413, 14.549226], [-90.573942, 14.548978], [-90.574195, 14.548504], [-90.57374, 14.548171], [-90.573784, 14.547449], [-90.573787, 14.547358], [-90.572597, 14.54715], [-90.572742, 14.547639], [-90.572394, 14.548046], [-90.571747, 14.547624], [-90.571589, 14.547841], [-90.571621, 14.54822], [-90.572227, 14.549134], [-90.5723, 14.549281], [-90.57211, 14.549586], [-90.571722, 14.549611], [-90.571355, 14.549311], [-90.570705, 14.550045], [-90.57054, 14.550131], [-90.570161, 14.550082], [-90.57019, 14.549201], [-90.57061, 14.548847], [-90.570714, 14.548513], [-90.570439, 14.548131], [-90.57013, 14.547884], [-90.569757, 14.547874], [-90.569533, 14.548], [-90.569448, 14.548174], [-90.569816, 14.548487], [-90.570094, 14.548711], [-90.569857, 14.549157], [-90.569906, 14.549278], [-90.569347, 14.549281], [-90.569095, 14.550143], [-90.569265, 14.550559], [-90.569527, 14.550559], [-90.569811, 14.550742], [-90.570235, 14.550764], [-90.570415, 14.550874], [-90.569913, 14.551678], [-90.569622, 14.551656], [-90.569227, 14.551494], [-90.5687, 14.551494], [-90.568535, 14.551953], [-90.569442, 14.552023], [-90.570175, 14.552041], [-90.57081, 14.551982], [-90.572518, 14.552144], [-90.57438, 14.552337], [-90.575056, 14.55253], [-90.575195, 14.552539], [-90.575288, 14.552483]]], "type": "Polygon"}, "id": "aaa59afe04f8c1376999210817e4109b", "properties": {"Colonia": "Residenciales Colinas de Monte Mar\u00eda Sur", "Contacto": "Mar\u00eda Esther Rold\u00e1n", "Organizaci\u00f3n": "Asociaci\u00f3n Colinas de Monte Mar\u00eda Sur"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-90.565082, 14.575873], [-90.565331, 14.575225], [-90.565961, 14.575429], [-90.566157, 14.57555], [-90.56618, 14.575581], [-90.565923, 14.576152], [-90.565082, 14.575873]]], "type": "Polygon"}, "id": "e5e31b0d0eff9aec272ce5d2a62cf090", "properties": {"Colonia": "Monte Mar\u00eda I", "Contacto": "Margarita Barrios M\u00e9rida", "Organizaci\u00f3n": "COCODE de la 4ra. Av. y 5ta. Av., 46 Calle y 47 Calle"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-90.564162, 14.576493], [-90.56432, 14.576542], [-90.564205, 14.576926], [-90.56377, 14.577984], [-90.563348, 14.57865], [-90.563208, 14.578563], [-90.563194, 14.578552], [-90.563417, 14.578195], [-90.563623, 14.577782], [-90.563921, 14.577028], [-90.564132, 14.576482], [-90.564162, 14.576493]]], "type": "Polygon"}, "id": "efd2c9bfb69ba481a39b8ab4d0625c66", "properties": {"Colonia": "Monte Mar\u00eda III", "Contacto": "Guadalupe Quijano Maldonado", "Organizaci\u00f3n": "COCODE de la 6ta. Av. y 45 Calle \"A\""}, "type": "Feature"}, {"geometry": {"coordinates": [[[-90.569526, 14.553105], [-90.574376, 14.553478], [-90.573943, 14.553734], [-90.573546, 14.554048], [-90.573317, 14.554456], [-90.572884, 14.555027], [-90.572655, 14.555528], [-90.572475, 14.55632], [-90.572449, 14.557838], [-90.572497, 14.558455], [-90.572497, 14.558898], [-90.572629, 14.558956], [-90.572644, 14.559003], [-90.572652, 14.559072], [-90.572639, 14.559149], [-90.572549, 14.559246], [-90.572501, 14.559259], [-90.572401, 14.559256], [-90.572173, 14.559169], [-90.571496, 14.5589], [-90.571464, 14.558872], [-90.571456, 14.558813], [-90.57147, 14.558728], [-90.571499, 14.55867], [-90.571565, 14.558618], [-90.571586, 14.558605], [-90.571618, 14.558009], [-90.571583, 14.558008], [-90.571394, 14.557665], [-90.57134, 14.557253], [-90.571301, 14.556899], [-90.571226, 14.556389], [-90.571148, 14.555835], [-90.571134, 14.555547], [-90.571131, 14.555411], [-90.571205, 14.554973], [-90.571181, 14.554938], [-90.571142, 14.554903], [-90.570513, 14.554839], [-90.570446, 14.554767], [-90.570409, 14.55459], [-90.569939, 14.55446], [-90.569896, 14.554134], [-90.569835, 14.553768], [-90.569786, 14.553519], [-90.569548, 14.553407], [-90.569542, 14.553224], [-90.569526, 14.553105]]], "type": "Polygon"}, "id": "f72f6604e946d78a7695a7b904f38f3e", "properties": {"Colonia": "Residenciales Colinas de Monte Mar\u00eda Norte", "Contacto": "Landy Garc\u00eda", "Organizaci\u00f3n": "Asociaci\u00f3n Colinas de Monte Mar\u00eda Norte"}, "type": "Feature"}, {"geometry": {"coordinates": [[[-90.561805, 14.586954], [-90.561564, 14.586746], [-90.561236, 14.58647], [-90.560946, 14.586229], [-90.560556, 14.5859], [-90.560297, 14.585681], [-90.559949, 14.585392], [-90.559879, 14.585334], [-90.559783, 14.585305], [-90.559703, 14.585321], [-90.559596, 14.585387], [-90.55938, 14.585634], [-90.559169, 14.585909], [-90.559154, 14.585936], [-90.559169, 14.586069], [-90.559253, 14.586176], [-90.559528, 14.586363], [-90.559938, 14.586645], [-90.560345, 14.586926], [-90.560783, 14.587226], [-90.561131, 14.587464], [-90.561203, 14.587508], [-90.561336, 14.587491], [-90.561415, 14.587454], [-90.561441, 14.587426], [-90.561595, 14.587229], [-90.561805, 14.586954]]], "type": "Polygon"}, "id": "fe3f88a9712a0ba1cbec896ae74f29c2", "properties": {"Colonia": "Colonia El Javier", "Contacto": "Jos\u00e9 \u00c1lvarez Orellana", "Organizaci\u00f3n": "COCODE El Javier"}, "type": "Feature"}], "type": "FeatureCollection"});
+        
+    
+    geo_json_98b1a6e7a4e8408dbcd8d02a5ce73467.bindTooltip(
+    function(layer){
+    let div = L.DomUtil.create('div');
+    
+    let handleObject = feature=>typeof(feature)=='object' ? JSON.stringify(feature) : feature;
+    let fields = ["Colonia", "Organizaci\u00f3n", "Contacto"];
+    let aliases = ["Colonia: ", "Organizaci\u00f3n: ", "Contacto: "];
+    let table = '<table>' +
+        String(
+        fields.map(
+        (v,i)=>
+        `<tr>
+            <th>${aliases[i]}</th>
+            
+            <td>${handleObject(layer.feature.properties[v])}</td>
+        </tr>`).join(''))
+    +'</table>';
+    div.innerHTML=table;
+    
+    return div
+    }
+    ,{"className": "foliumtooltip", "sticky": true});
+                     
+    
+            var feature_group_0d67b96a243a49358d7600d3c228e87a = L.featureGroup(
+                {}
+            ).addTo(map_625c1602015744b1bec62ec502be9847);
+        
+    
+            var circle_marker_f42dbd714020425c8fba4268f10a9fab = L.circleMarker(
+                [14.587387099999999, -90.5622449],
+                {"bubblingMouseEvents": true, "color": "#F2360C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F2360C", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_0d67b96a243a49358d7600d3c228e87a);
+        
+    
+            circle_marker_f42dbd714020425c8fba4268f10a9fab.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #F2360C; color: white;'><center><b>Retiro de mupi publicitario en área pública</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Frente a Colonia Liceo Javier</b></td>
+        </tr>
+        <tr>
+                    <td style='text-align: left; color:white;'><b>Antes:</b>&nbsp;04/05/2020</td>
+            <td style='text-align: left; color:white;'><b>Después:</b>&nbsp;25/09/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/TK1PwQyiea/s25/174cb4fed18/Retiro_Mupi_Publicitario_Col_J' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/PACMdWNJiq/s25/174cb4fe930/Retiro_Mupi_Publicitario_Col_J' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var feature_group_803e39a53c704e1eb5b9d0f44aa68fd7 = L.featureGroup(
+                {}
+            ).addTo(map_625c1602015744b1bec62ec502be9847);
+        
+    
+            var circle_marker_94ca6d18a82144dfb0f6d0b44c3bf2bb = L.circleMarker(
+                [14.5724541, -90.56631879999999],
+                {"bubblingMouseEvents": true, "color": "#F2360C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F2360C", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_803e39a53c704e1eb5b9d0f44aa68fd7);
+        
+    
+            circle_marker_94ca6d18a82144dfb0f6d0b44c3bf2bb.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #F2360C; color: white;'><center><b>Sellado de boquete</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Muro Perimetral, tope 5ta. Av. Monte María 3</b></td>
+        </tr>
+        <tr>
+                    <td style='text-align: left; color:white;'><b>Antes:</b>&nbsp;12/07/2020</td>
+            <td style='text-align: left; color:white;'><b>Después:</b>&nbsp;13/08/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/G7cD7JtKiq/s25/173ea2322b0/Sellado_muro_perimetral_Antes' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/ejGtmnH4iq/s25/173ea05e268/Sellado_muro_perimetral_Despue' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_99704e059bae44ac9a2f8482ae75e25d = L.circleMarker(
+                [14.5774676, -90.5672775],
+                {"bubblingMouseEvents": true, "color": "#F2A20C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F2A20C", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_803e39a53c704e1eb5b9d0f44aa68fd7);
+        
+    
+            circle_marker_99704e059bae44ac9a2f8482ae75e25d.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #F2A20C; color: white;'><center><b>Trabajo de bacheo municipal</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>46 Calle y 2da. Av, Monte María I</b></td>
+        </tr>
+        <tr>
+                    <td style='text-align: left; color:white;'><b>Antes:</b>&nbsp;05/09/2020</td>
+            <td style='text-align: left; color:white;'><b>Después:</b>&nbsp;30/09/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/uPyc12Upiq/s25/174f06a8d88/Bacheo_frente_colegio_1__1_' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/nrZJieVKea/s25/174e5be4898/Bacheo_fente_colegio_2' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_2f1b3b186fa441e985a9c4a6c9cf4f29 = L.circleMarker(
+                [14.5815965, -90.5659422],
+                {"bubblingMouseEvents": true, "color": "#F2A20C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F2A20C", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_803e39a53c704e1eb5b9d0f44aa68fd7);
+        
+    
+            circle_marker_2f1b3b186fa441e985a9c4a6c9cf4f29.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #F2A20C; color: white;'><center><b>Trabajo de bacheo municipal</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>42 Calle y 1ra. Av, Monte María I</b></td>
+        </tr>
+        <tr>
+                    <td style='text-align: left; color:white;'><b>Antes:</b>&nbsp;05/09/2020</td>
+            <td style='text-align: left; color:white;'><b>Después:</b>&nbsp;30/09/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/ZjGGssohiq/s25/174e5c72a08/Bacheo_frente_PEPSI_2__1_' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/M1lFr69gea/s25/174e5be5068/Bacheo_frente_PEPSI_1' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_8fed2f775ebf48e89bb12d3a4ae4fe1a = L.circleMarker(
+                [14.5766975, -90.5676215],
+                {"bubblingMouseEvents": true, "color": "#F2A20C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F2A20C", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_803e39a53c704e1eb5b9d0f44aa68fd7);
+        
+    
+            circle_marker_8fed2f775ebf48e89bb12d3a4ae4fe1a.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #F2A20C; color: white;'><center><b>Trabajo de bacheo municipal</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Intersección 46 Calle y 2da Av, Monte María I</b></td>
+        </tr>
+        <tr>
+                    <td style='text-align: left; color:white;'><b>Antes:</b>&nbsp;05/09/2020</td>
+            <td style='text-align: left; color:white;'><b>Después:</b>&nbsp;30/09/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/b9kBh8eKiq/s25/174f081a798/Bacheo_interseccion_46_1' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/rET7VenUea/s25/174f081a3b0/Bacheo_interseccion_46_2' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_4620b434385b47dea8d40c7c8526d258 = L.circleMarker(
+                [14.582803899999998, -90.5650608],
+                {"bubblingMouseEvents": true, "color": "#F2A20C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F2A20C", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_803e39a53c704e1eb5b9d0f44aa68fd7);
+        
+    
+            circle_marker_4620b434385b47dea8d40c7c8526d258.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #F2A20C; color: white;'><center><b>Trabajo de bacheo municipal</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Intersección, 1ra. Av. y 4ta. Av, Monte María I</b></td>
+        </tr>
+        <tr>
+                    <td style='text-align: left; color:white;'><b>Antes:</b>&nbsp;05/09/2020</td>
+            <td style='text-align: left; color:white;'><b>Después:</b>&nbsp;30/09/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/04fl_RmIea/s25/174f61461c8/Bacheo_PEPSI_Atras_1' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/vyQohHn0iq/s25/174f61459f8/Bacheo_PEPSI_Atras_2' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c219f329724641edaaf0fbf726961e1a = L.circleMarker(
+                [14.577721900000002, -90.5675366],
+                {"bubblingMouseEvents": true, "color": "#F2A20C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F2A20C", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_803e39a53c704e1eb5b9d0f44aa68fd7);
+        
+    
+            circle_marker_c219f329724641edaaf0fbf726961e1a.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #F2A20C; color: white;'><center><b>Trabajo de bacheo municipal</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>1ra. Av. Monte María I</b></td>
+        </tr>
+        <tr>
+                    <td style='text-align: left; color:white;'><b>Antes:</b>&nbsp;05/09/2020</td>
+            <td style='text-align: left; color:white;'><b>Después:</b>&nbsp;30/09/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/6PHL5mJWiq/s25/174f61fb050/Bacheo_1ra_av_1' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/SCoAguWJea/s25/174f61fac68/Bacheo_1ra_av_2' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_81c1cfefb0784ad1be50254792a818d8 = L.circleMarker(
+                [14.5771274, -90.5674458],
+                {"bubblingMouseEvents": true, "color": "#F2A20C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F2A20C", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_803e39a53c704e1eb5b9d0f44aa68fd7);
+        
+    
+            circle_marker_81c1cfefb0784ad1be50254792a818d8.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #F2A20C; color: white;'><center><b>Trabajo de bacheo municipal</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>2da. Av. Monte María I</b></td>
+        </tr>
+        <tr>
+                    <td style='text-align: left; color:white;'><b>Antes:</b>&nbsp;05/09/2020</td>
+            <td style='text-align: left; color:white;'><b>Después:</b>&nbsp;30/09/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/TxhsyvE4ea/s25/174f6241168/Bacheo_2da_av_atras_1' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/9jw6gz4Ziq/s25/174f6240d80/Bacheo_2da_av_atras_2' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var feature_group_40fdbb9500a6463d958aeac3cb2690f9 = L.featureGroup(
+                {}
+            ).addTo(map_625c1602015744b1bec62ec502be9847);
+        
+    
+            var circle_marker_9eed287c1ccc4c5ab392d0ea5fae510e = L.circleMarker(
+                [14.5809035, -90.565207],
+                {"bubblingMouseEvents": true, "color": "#F2A20C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F2A20C", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_40fdbb9500a6463d958aeac3cb2690f9);
+        
+    
+            circle_marker_9eed287c1ccc4c5ab392d0ea5fae510e.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #F2A20C; color: white;'><center><b>Recuperación área pública</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Tienda Esquipulas</b></td>
+        </tr>
+        <tr>
+                    <td style='text-align: left; color:white;'><b>Antes:</b>&nbsp;04/05/2020</td>
+            <td style='text-align: left; color:white;'><b>Después:</b>&nbsp;22/05/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/G_ULpmvQiq/s25/173989db090/Tienda_Antes' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/xrQpeVVxiq/s25/173989daca8/Tienda_despues' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var feature_group_6760f46cb5ea401f8dbf44eb48b87901 = L.featureGroup(
+                {}
+            ).addTo(map_625c1602015744b1bec62ec502be9847);
+        
+    
+            var circle_marker_15cc5dc49a0a4cf48b8dc9f562137995 = L.circleMarker(
+                [14.574843, -90.56845809999999],
+                {"bubblingMouseEvents": true, "color": "#F2360C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F2360C", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6760f46cb5ea401f8dbf44eb48b87901);
+        
+    
+            circle_marker_15cc5dc49a0a4cf48b8dc9f562137995.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #F2360C; color: white;'><center><b>Reparación de fuga de agua</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>48 Calle y 2da. Av, Monte María I</b></td>
+        </tr>
+        <tr>
+                    <td style='text-align: left; color:white;'><b>Antes:</b>&nbsp;20/07/2020</td>
+            <td style='text-align: left; color:white;'><b>Después:</b>&nbsp;22/07/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/kbxIu7GBea/s25/1739d11a0c8/Fuga_agua_antes' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/HVhEG3VEiq/s25/1739d1198f8/Fuga_agua_despues' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_185c37248a94474f8e445a95e0cfe0a5 = L.circleMarker(
+                [14.580504300000001, -90.5667168],
+                {"bubblingMouseEvents": true, "color": "#F2A20C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F2A20C", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6760f46cb5ea401f8dbf44eb48b87901);
+        
+    
+            circle_marker_185c37248a94474f8e445a95e0cfe0a5.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #F2A20C; color: white;'><center><b>Parqueo en doble fila</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>1ra. Av. Monte María I</b></td>
+        </tr>
+        <tr>
+                    <td style='text-align: left; color:white;'><b>Antes:</b>&nbsp;04/06/2020</td>
+            <td style='text-align: left; color:white;'><b>Después:</b>&nbsp;29/06/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/J4808owvea/s25/173b0a96008/Parqueo_doble_fila_antes' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/V0NVG5u-iq/s25/173b0aa5a08/Parqueo_doble_fila_despues' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_6de301862bc2427c9271cb7a37717c6c = L.circleMarker(
+                [14.552319199999998, -90.5749946],
+                {"bubblingMouseEvents": true, "color": "#167362", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#167362", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6760f46cb5ea401f8dbf44eb48b87901);
+        
+    
+            circle_marker_6de301862bc2427c9271cb7a37717c6c.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #167362; color: white;'><center><b>Entrega de víveres a familias vulnerables</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Colinas de Monte María Sur</b></td>
+        </tr>
+        <tr>
+                    <td colspan='2' style='text-align: center; color:white;'><b>Fecha:</b>&nbsp;10/07/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/PVQnXCSYiq/s25/173b09b7588/Viveres_Colinas_Sur_1' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/Ir7H6GX0ea/s25/173b09b7970/Viveres_Colinas_Sur_2' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_08da74192c2e4d71b43e0e10615e6d40 = L.circleMarker(
+                [14.5719797, -90.5638075],
+                {"bubblingMouseEvents": true, "color": "#167362", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#167362", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6760f46cb5ea401f8dbf44eb48b87901);
+        
+    
+            circle_marker_08da74192c2e4d71b43e0e10615e6d40.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #167362; color: white;'><center><b>Entrega de víveres a familias vulnerables</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Colonia Prados de Monte María</b></td>
+        </tr>
+        <tr>
+                    <td colspan='2' style='text-align: center; color:white;'><b>Fecha:</b>&nbsp;04/07/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/zJaZo21jiq/s25/173b09b7d58/Viveres_prados_1' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/Rj2EOZqGea/s25/173b09b7d58/Viveres_prados_2' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_6b3b9ecfce7e47e7a745c028d20e0520 = L.circleMarker(
+                [14.5518961, -90.5694968],
+                {"bubblingMouseEvents": true, "color": "#167362", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#167362", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6760f46cb5ea401f8dbf44eb48b87901);
+        
+    
+            circle_marker_6b3b9ecfce7e47e7a745c028d20e0520.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #167362; color: white;'><center><b>Reunión Colinas Monte María Sur y Norte</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Parque Colinas de Monte María Sur</b></td>
+        </tr>
+        <tr>
+                    <td colspan='2' style='text-align: center; color:white;'><b>Fecha:</b>&nbsp;06/08/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/Hhfcpg5jiq/s25/173c5dace30/Reunion_Colinas_Sur_Norte_1' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/V0_Q8qd1ea/s25/173c5dac660/Reunion_Colinas_Sur_Norte_2' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_44ff642338f0420ab26f0a6484245e58 = L.circleMarker(
+                [14.577145499999999, -90.5685108],
+                {"bubblingMouseEvents": true, "color": "#167362", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#167362", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6760f46cb5ea401f8dbf44eb48b87901);
+        
+    
+            circle_marker_44ff642338f0420ab26f0a6484245e58.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #167362; color: white;'><center><b>Atención de Unidad Móvil Municipal</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Hospital Oftalmológico de Villa Nueva</b></td>
+        </tr>
+        <tr>
+                    <td colspan='2' style='text-align: center; color:white;'><b>Fecha:</b>&nbsp;06/08/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/6Ke6ighiiq/s25/173c5dac278/Unidad_Movil_Muni_1' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/USqmlP74iq/s25/173c5daa720/Unidad_Movil_Muni_2' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_df290ef8ad2745b1a770c93c62bd7a51 = L.circleMarker(
+                [14.5819193, -90.5665417],
+                {"bubblingMouseEvents": true, "color": "#167362", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#167362", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6760f46cb5ea401f8dbf44eb48b87901);
+        
+    
+            circle_marker_df290ef8ad2745b1a770c93c62bd7a51.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #167362; color: white;'><center><b>Asamblea ciudadana Monte María</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Olztad Compresores</b></td>
+        </tr>
+        <tr>
+                    <td colspan='2' style='text-align: center; color:white;'><b>Fecha:</b>&nbsp;09/08/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/A98kJuKUea/s25/173e321b968/Asamblea_ciudadana_MMA_1' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/A9rA0n4ciq/s25/173e321b580/Asamblea_Ciudadana_MMA_2' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_026640839a684972beef1ac696041bce = L.circleMarker(
+                [14.586953699999999, -90.5617422],
+                {"bubblingMouseEvents": true, "color": "#167362", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#167362", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6760f46cb5ea401f8dbf44eb48b87901);
+        
+    
+            circle_marker_026640839a684972beef1ac696041bce.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #167362; color: white;'><center><b>Atención de Unidad Móvil Municipal</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Colonia Liceo Javier</b></td>
+        </tr>
+        <tr>
+                    <td colspan='2' style='text-align: center; color:white;'><b>Fecha:</b>&nbsp;18/08/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/06fsTeMWiq/s25/1740d1ae708/Unidad_Movil_Muni_Col_Javier_1' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/oX1_RGbWea/s25/1740d1ae320/Unidad_Movil_Muni_Col_Javier_2' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_9127944ff04241fbaa1c9807bb562ea3 = L.circleMarker(
+                [14.5522785, -90.5747819],
+                {"bubblingMouseEvents": true, "color": "#167362", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#167362", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6760f46cb5ea401f8dbf44eb48b87901);
+        
+    
+            circle_marker_9127944ff04241fbaa1c9807bb562ea3.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #167362; color: white;'><center><b>Atención de Unidad Móvil Municipal</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Colinas de Monte María Sur</b></td>
+        </tr>
+        <tr>
+                    <td colspan='2' style='text-align: center; color:white;'><b>Fecha:</b>&nbsp;28/08/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/xpW83bwcea/s25/174450a2980/Unidad_Movil_Muni_MM_Sur_1' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/NOKF-Uouea/s25/174450a2980/Unidad_Movil_Muni_MM_Sur_2' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c77fde0fbc94417292c43f33985b802a = L.circleMarker(
+                [14.579935999999998, -90.5637478],
+                {"bubblingMouseEvents": true, "color": "#167362", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#167362", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6760f46cb5ea401f8dbf44eb48b87901);
+        
+    
+            circle_marker_c77fde0fbc94417292c43f33985b802a.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #167362; color: white;'><center><b>Acercamiento DIPAFRONT y COCODES</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>4ta. Av. Monte María III</b></td>
+        </tr>
+        <tr>
+                    <td colspan='2' style='text-align: center; color:white;'><b>Fecha:</b>&nbsp;28/08/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/YbziC2Oliq/s25/17445115188/Acercamiento_Dipafront_1' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/zVtUhvs2iq/s25/17445114da0/Acercamiento_Dipafront_2' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_135756d5801c4acba3565049f54e40ce = L.circleMarker(
+                [14.5774576, -90.56295250000001],
+                {"bubblingMouseEvents": true, "color": "#167362", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#167362", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6760f46cb5ea401f8dbf44eb48b87901);
+        
+    
+            circle_marker_135756d5801c4acba3565049f54e40ce.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #167362; color: white;'><center><b>Reforestación de área verde</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Bosquecito Col. Monte María III</b></td>
+        </tr>
+        <tr>
+                    <td colspan='2' style='text-align: center; color:white;'><b>Fecha:</b>&nbsp;05/08/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/5QBi0ZOHiq/s25/174451fa198/Reforestacion_parque_MM3_1' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/iVL0v2Zjea/s25/174451fa968/Reforestacion_parque_MM3_2' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_4664afb7a4d9442c8e601e81adbbb55b = L.circleMarker(
+                [14.5776095, -90.5690275],
+                {"bubblingMouseEvents": true, "color": "#167362", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#167362", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6760f46cb5ea401f8dbf44eb48b87901);
+        
+    
+            circle_marker_4664afb7a4d9442c8e601e81adbbb55b.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #167362; color: white;'><center><b>Visita de campo paso a desnivel Monte María</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Frente a SKIPY Aguilar Batres</b></td>
+        </tr>
+        <tr>
+                    <td colspan='2' style='text-align: center; color:white;'><b>Fecha:</b>&nbsp;14/09/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/IXBcDxbBiq/s25/1748f5a31d8/Visita_Paso_Desnivel_1' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/kc5aX-aqiq/s25/1748f5a35c0/Visita_Paso_Desnivel_2' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_6fdea609095b407caa3898bde7eb0d74 = L.circleMarker(
+                [14.5814336, -90.5641266],
+                {"bubblingMouseEvents": true, "color": "#167362", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#167362", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6760f46cb5ea401f8dbf44eb48b87901);
+        
+    
+            circle_marker_6fdea609095b407caa3898bde7eb0d74.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #167362; color: white;'><center><b>Reunión con vecinos y Ofibodegas</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>3ra. avenida entre 41 y 44 calle</b></td>
+        </tr>
+        <tr>
+                    <td colspan='2' style='text-align: center; color:white;'><b>Fecha:</b>&nbsp;17/09/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/7fL8ypIziq/s25/174a2d0e428/Reunion_Vecinos_Ofibodegas_1' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/VTrkIQfmiq/s25/174a2d0dc58/Reunion_Vecinos_Ofibodegas_2' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_a3f7874a63cb44b3a24ffdab47937052 = L.circleMarker(
+                [14.5751451, -90.5631482],
+                {"bubblingMouseEvents": true, "color": "#167362", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#167362", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6760f46cb5ea401f8dbf44eb48b87901);
+        
+    
+            circle_marker_a3f7874a63cb44b3a24ffdab47937052.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #167362; color: white;'><center><b>Atención de Unidad Móvil Municipal</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Frente a garita Prados de Monte María</b></td>
+        </tr>
+        <tr>
+                    <td colspan='2' style='text-align: center; color:white;'><b>Fecha:</b>&nbsp;13/10/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/7eSsM4kRea/s25/1754257e550/VUM_Prados_2' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/8D5O8FGGea/s25/1754257e168/VUM_Prados_1' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_6a862e1f0bce4c7a8db02438998b186f = L.circleMarker(
+                [14.580766699999998, -90.56492340000001],
+                {"bubblingMouseEvents": true, "color": "#F2A20C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F2A20C", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6760f46cb5ea401f8dbf44eb48b87901);
+        
+    
+            circle_marker_6a862e1f0bce4c7a8db02438998b186f.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #F2A20C; color: white;'><center><b>Mejora de alumbrado público</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>42 Calle, entre 2da. y 3ra. Av. Monte María 3</b></td>
+        </tr>
+        <tr>
+                    <td style='text-align: left; color:white;'><b>Antes:</b>&nbsp;29/09/2020</td>
+            <td style='text-align: left; color:white;'><b>Después:</b>&nbsp;24/10/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/NtwT0LB-ea/s25/1756239d270/Alumbrado_publico_PEPSI_1' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/vDSqxBexiq/s25/1756239ce88/Alubrado_publico_PEPSI_2' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_1fe58d88ca7741289589b3af72763a4b = L.circleMarker(
+                [14.5518922, -90.56943840000001],
+                {"bubblingMouseEvents": true, "color": "#167362", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#167362", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_6760f46cb5ea401f8dbf44eb48b87901);
+        
+    
+            circle_marker_1fe58d88ca7741289589b3af72763a4b.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #167362; color: white;'><center><b>Entrega de víveres a familias vulnerables</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Cerca del Parque Colinas de Monte María Sur</b></td>
+        </tr>
+        <tr>
+                    <td colspan='2' style='text-align: center; color:white;'><b>Fecha:</b>&nbsp;24/10/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/kmFTWGBTiq/s25/175624b4730/Entrega_Viveres_Ancianos_Colin' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/24AURZlCea/s25/175624b4b18/Entrega_Viveres_Ancianos_Colin' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var feature_group_605bfbb40f8f4af1925b48bfbb2032f1 = L.featureGroup(
+                {}
+            ).addTo(map_625c1602015744b1bec62ec502be9847);
+        
+    
+            var circle_marker_1696fef202b5445fb8346ac0145d3272 = L.circleMarker(
+                [14.580434599999998, -90.5668577],
+                {"bubblingMouseEvents": true, "color": "#F2A20C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F2A20C", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_605bfbb40f8f4af1925b48bfbb2032f1);
+        
+    
+            circle_marker_1696fef202b5445fb8346ac0145d3272.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #F2A20C; color: white;'><center><b>Recuperación área pública</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>1ra. Av. y 44 Calle, Monte María I</b></td>
+        </tr>
+        <tr>
+                    <td style='text-align: left; color:white;'><b>Antes:</b>&nbsp;16/05/2020</td>
+            <td style='text-align: left; color:white;'><b>Después:</b>&nbsp;20/07/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/Eh8B4FqKea/s25/173b00505d0/Bloqueo_area_antes' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/Rf0V3Dfeea/s25/173b00509b8/Bloqueo_area_despues' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_6fb988ddd05947c78c45724c28ca16b6 = L.circleMarker(
+                [14.572737699999998, -90.56609920000001],
+                {"bubblingMouseEvents": true, "color": "#167362", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#167362", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_605bfbb40f8f4af1925b48bfbb2032f1);
+        
+    
+            circle_marker_6fb988ddd05947c78c45724c28ca16b6.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #167362; color: white;'><center><b>Reunión con Seguridad Integral COCOPRE</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Tope 5ta. Av. Monte María 3</b></td>
+        </tr>
+        <tr>
+                    <td colspan='2' style='text-align: center; color:white;'><b>Fecha:</b>&nbsp;18/09/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/nN5mWxDFea/s25/174ac5477f8/Reunion_Seguridad_Integral_MM1' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/LlHaOrA9iq/s25/174ac547be0/Reunion_Seguridad_Integral_MM1' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var feature_group_11b8cf0ca1dc4c908b119f2858f0b985 = L.featureGroup(
+                {}
+            ).addTo(map_625c1602015744b1bec62ec502be9847);
+        
+    
+            var circle_marker_4ce886148d434b31b83a123917a8d101 = L.circleMarker(
+                [14.5775579, -90.5629363],
+                {"bubblingMouseEvents": true, "color": "#F2360C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F2360C", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_11b8cf0ca1dc4c908b119f2858f0b985);
+        
+    
+            circle_marker_4ce886148d434b31b83a123917a8d101.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #F2360C; color: white;'><center><b>Poda de árboles en riesgo</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Bosquecito Col. Monte María III</b></td>
+        </tr>
+        <tr>
+                    <td style='text-align: left; color:white;'><b>Antes:</b>&nbsp;19/05/2020</td>
+            <td style='text-align: left; color:white;'><b>Después:</b>&nbsp;04/06/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/8NsQeCMNea/s25/173988e04d8/Poda_antes' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/UPYP9V4Lea/s25/17395d59f80/Poda_despues' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_5f6fee052e4148ccb4f5418566a31daa = L.circleMarker(
+                [14.574725699999998, -90.567852],
+                {"bubblingMouseEvents": true, "color": "#F2A20C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F2A20C", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_11b8cf0ca1dc4c908b119f2858f0b985);
+        
+    
+            circle_marker_5f6fee052e4148ccb4f5418566a31daa.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #F2A20C; color: white;'><center><b>Poda de área verde pública</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Frente a Club Monte María, Monte María 3</b></td>
+        </tr>
+        <tr>
+                    <td style='text-align: left; color:white;'><b>Antes:</b>&nbsp;01/08/2020</td>
+            <td style='text-align: left; color:white;'><b>Después:</b>&nbsp;05/08/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/Gh9RPwxqea/s25/173c0e9beb8/Poda_Club_antes' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/_GZ2qekQea/s25/173c0e9c2a0/Poda_Club_despues' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_901d87312a6a4618a7a00b07875c6095 = L.circleMarker(
+                [14.586538599999999, -90.56059509999999],
+                {"bubblingMouseEvents": true, "color": "#167362", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#167362", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_11b8cf0ca1dc4c908b119f2858f0b985);
+        
+    
+            circle_marker_901d87312a6a4618a7a00b07875c6095.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #167362; color: white;'><center><b>Sanitización de área pública y fumigación</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Colonia Liceo Javier</b></td>
+        </tr>
+        <tr>
+                    <td colspan='2' style='text-align: center; color:white;'><b>Fecha:</b>&nbsp;18/08/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/xECVaLD1ea/s25/1740ce25e60/Sanitizacion_col_javier_1' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/So6eC8sSiq/s25/1740ce25a78/Sanitizacion_col_javier_2' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_412ce59e421a4576917cd17fccc35d69 = L.circleMarker(
+                [14.5569649, -90.5714127],
+                {"bubblingMouseEvents": true, "color": "#167362", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#167362", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_11b8cf0ca1dc4c908b119f2858f0b985);
+        
+    
+            circle_marker_412ce59e421a4576917cd17fccc35d69.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #167362; color: white;'><center><b>Sanitización de área pública y fumigación</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Colinas de Monte María Norte</b></td>
+        </tr>
+        <tr>
+                    <td colspan='2' style='text-align: center; color:white;'><b>Fecha:</b>&nbsp;14/09/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/U7zr5kfsiq/s25/1748f46b590/Sanitizacion_Colinas_Norte_1' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/4Ipmt0JOea/s25/1748f46b1a8/Sanitizacion_Colinas_Norte_2' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_1b166e230e0c40ee8112e169e5e7dcc5 = L.circleMarker(
+                [14.5508886, -90.5720395],
+                {"bubblingMouseEvents": true, "color": "#167362", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#167362", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_11b8cf0ca1dc4c908b119f2858f0b985);
+        
+    
+            circle_marker_1b166e230e0c40ee8112e169e5e7dcc5.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #167362; color: white;'><center><b>Sanitización de área pública y fumigación</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Colinas de Monte María Sur</b></td>
+        </tr>
+        <tr>
+                    <td colspan='2' style='text-align: center; color:white;'><b>Fecha:</b>&nbsp;14/09/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/pAehHLc8ea/s25/1748f46b1a8/Sanitizacion_Colinas_Sur_1' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/EleMDvk7iq/s25/1748f46adc0/Sanitizacion_Colinas_Sur_2' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_d549e010e9de4c0eabdca36ac836f51f = L.circleMarker(
+                [14.5783144, -90.56573320000001],
+                {"bubblingMouseEvents": true, "color": "#F2A20C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F2A20C", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_11b8cf0ca1dc4c908b119f2858f0b985);
+        
+    
+            circle_marker_d549e010e9de4c0eabdca36ac836f51f.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #F2A20C; color: white;'><center><b>Poda y limpieza de área pública</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>45 calle y 3ra. Av. Monte María I</b></td>
+        </tr>
+        <tr>
+                    <td style='text-align: left; color:white;'><b>Antes:</b>&nbsp;10/09/2020</td>
+            <td style='text-align: left; color:white;'><b>Después:</b>&nbsp;17/09/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/CFbY6bWbea/s25/174b18697b0/Poda_Area_Publica_MM1_2' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/l8N4Rvi-ea/s25/174ac4c6978/Poda_area_publica_MM1_1' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_bda573c82b8b472097c61430f33a60b1 = L.circleMarker(
+                [14.585978299999999, -90.560665],
+                {"bubblingMouseEvents": true, "color": "#167362", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#167362", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_11b8cf0ca1dc4c908b119f2858f0b985);
+        
+    
+            circle_marker_bda573c82b8b472097c61430f33a60b1.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #167362; color: white;'><center><b>Poda y limpieza de área pública</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Colonia Liceo Javier</b></td>
+        </tr>
+        <tr>
+                    <td colspan='2' style='text-align: center; color:white;'><b>Fecha:</b>&nbsp;17/09/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/8cvZC8wQiq/s25/174ac5c1918/Poda_Colonia_Javier_1' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/U76N6f0bea/s25/174ac5c1d00/Poda_Colonia_Javier_2' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_73d2b6e9d668465dbdef7a6c881511a2 = L.circleMarker(
+                [14.574780300000002, -90.5680499],
+                {"bubblingMouseEvents": true, "color": "#167362", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#167362", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_11b8cf0ca1dc4c908b119f2858f0b985);
+        
+    
+            circle_marker_73d2b6e9d668465dbdef7a6c881511a2.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #167362; color: white;'><center><b>Poda y limpieza de área pública</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Frente a Club Monte María, Monte María 3</b></td>
+        </tr>
+        <tr>
+                    <td colspan='2' style='text-align: center; color:white;'><b>Fecha:</b>&nbsp;17/09/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/rR_isw8hea/s25/174ac5eebc0/Poda_Club_MMA_1' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/y8xUySvPiq/s25/174ac5ee7d8/Poda_Club_MMA_2' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_5eba32b13d59498cbd15e1315d61546a = L.circleMarker(
+                [14.573984900000001, -90.5627038],
+                {"bubblingMouseEvents": true, "color": "#167362", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#167362", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_11b8cf0ca1dc4c908b119f2858f0b985);
+        
+    
+            circle_marker_5eba32b13d59498cbd15e1315d61546a.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #167362; color: white;'><center><b>Poda y limpieza de área pública</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Prados de Monte Maria, 46 calle</b></td>
+        </tr>
+        <tr>
+                    <td colspan='2' style='text-align: center; color:white;'><b>Fecha:</b>&nbsp;17/09/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/W3XTKHv8iq/s25/174ac636060/Poda_Prados_MMA_1' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/joELQyZTea/s25/174ac635c78/Poda_Prados_MMA_2' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_c5e7576fa3404f70b946eb5e9d4da6bb = L.circleMarker(
+                [14.5760285, -90.57104620000001],
+                {"bubblingMouseEvents": true, "color": "#F2360C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F2360C", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_11b8cf0ca1dc4c908b119f2858f0b985);
+        
+    
+            circle_marker_c5e7576fa3404f70b946eb5e9d4da6bb.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #F2360C; color: white;'><center><b>Poda y limpieza de área pública</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>Carril auxiliar, Aguilar Batres</b></td>
+        </tr>
+        <tr>
+                    <td style='text-align: left; color:white;'><b>Antes:</b>&nbsp;12/03/2020</td>
+            <td style='text-align: left; color:white;'><b>Después:</b>&nbsp;18/09/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/vOI8BS6Piq/s25/174bcdf6498/Poda_Arbol_Carril_Auxiliar_1' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/ESah8xnIea/s25/174bcdf60b0/Poda_Arbol_Carril_Auxiliar_2' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var circle_marker_061319673b8e4e2ea74f77e5819d1f25 = L.circleMarker(
+                [14.575478400000001, -90.56813829999999],
+                {"bubblingMouseEvents": true, "color": "#F2360C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F2360C", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7, "stroke": true, "weight": 3}
+            ).addTo(feature_group_11b8cf0ca1dc4c908b119f2858f0b985);
+        
+    
+            circle_marker_061319673b8e4e2ea74f77e5819d1f25.bindTooltip(
+                `<div style="border-color: #1c355e; border-style: solid; border-width: 6px;">
+                     
+    <table id='datos'>
+            <caption style='background-color: #F2360C; color: white;'><center><b>Poda y limpieza de área pública</b></center></caption>
+    <tbody>
+        <tr>
+            <td colspan='2' style='color:#feda5f;'><b>2a. Avenida 47-32, Zona 12, Monte Maria 1</b></td>
+        </tr>
+        <tr>
+                    <td style='text-align: left; color:white;'><b>Antes:</b>&nbsp;05/10/2020</td>
+            <td style='text-align: left; color:white;'><b>Después:</b>&nbsp;07/10/2020</td>
+        </tr>
+        <tr>
+            <td style='border-right: 6px solid #1c355e;'><img src='https://www.4shared.com/img/SqakNH-7iq/s25/1750a978e90/Poda_arbol_riesgo_2da_av_1' border=0 height=150 width=150></td>
+            <td style='border-left: 6px solid #1c355e;'><img src='https://www.4shared.com/img/bLMimlovea/s25/1750a979278/Poda_arbol_riesgo_2da_av_2' border=0 height=150 width=150></td>
+        </tr>
+    </tbody>
+    </table>
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var geo_json_98b1a6e7a4e8408dbcd8d02a5ce73467searchControl = new L.Control.Search({
+                layer: geo_json_98b1a6e7a4e8408dbcd8d02a5ce73467,
+                
+                propertyName: 'Organización',
+                
+                collapsed: true,
+                textPlaceholder: 'Organización',
+                position:'topleft',                
+            
+                marker: false,
+                moveToLocation: function(latlng, title, map) {
+                var zoom =  map.getBoundsZoom(latlng.layer.getBounds()) 
+                    map.flyTo(latlng, zoom); // access the zoom
+                }
+            
+                });
+                geo_json_98b1a6e7a4e8408dbcd8d02a5ce73467searchControl.on('search:locationfound', function(e) {
+                    geo_json_98b1a6e7a4e8408dbcd8d02a5ce73467.setStyle(function(feature){
+                        return feature.properties.style
+                    })
+                    
+                    if(e.layer._popup)
+                        e.layer.openPopup();
+                })
+                geo_json_98b1a6e7a4e8408dbcd8d02a5ce73467searchControl.on('search:collapsed', function(e) {
+                        geo_json_98b1a6e7a4e8408dbcd8d02a5ce73467.setStyle(function(feature){
+                            return feature.properties.style
+                    });
+                });
+            map_625c1602015744b1bec62ec502be9847.addControl( geo_json_98b1a6e7a4e8408dbcd8d02a5ce73467searchControl );
+
+        
+    
+            var layer_control_9045edf226724afa98a23bb5c750b10d = {
+                base_layers : {
+                    "Filtros" : tile_layer_46d79037557844de9a1131f2b45efa73,
+                },
+                overlays :  {
+                    "Organizaciones" : feature_group_5825ca76e70b47e4bc755f3aceea46a9,
+                    "Gesti\u00f3n Urb." : feature_group_0d67b96a243a49358d7600d3c228e87a,
+                    "Infra." : feature_group_803e39a53c704e1eb5b9d0f44aa68fd7,
+                    "Juzg. Mpal." : feature_group_40fdbb9500a6463d958aeac3cb2690f9,
+                    "Org. Com." : feature_group_6760f46cb5ea401f8dbf44eb48b87901,
+                    "Seg. Integral" : feature_group_605bfbb40f8f4af1925b48bfbb2032f1,
+                    "Serv. Publ." : feature_group_11b8cf0ca1dc4c908b119f2858f0b985,
+                },
+            };
+            L.control.layers(
+                layer_control_9045edf226724afa98a23bb5c750b10d.base_layers,
+                layer_control_9045edf226724afa98a23bb5c750b10d.overlays,
+                {"autoZIndex": true, "collapsed": true, "position": "topright"}
+            ).addTo(map_625c1602015744b1bec62ec502be9847);
+        
+</script>
